@@ -1,8 +1,12 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
+menu = ['О сайте', 'Добавить статья', 'Обратная связь', 'Войти']
 def index(request):
-    return HttpResponse("Страница приложения Auen.")
+    return render(request, 'auen/index.html', {'menu': menu, 'title': 'Главная функция'})
+
+def about(request):
+    return render(request, 'auen/about.html', {'menu': menu, 'title': 'О сайте'})
 
 def categories(request, catid):
     if request.POST:
