@@ -1,9 +1,12 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
+from .models import *
+
 menu = ['О сайте', 'Добавить статья', 'Обратная связь', 'Войти']
 def index(request):
-    return render(request, 'auen/index.html', {'menu': menu, 'title': 'Главная функция'})
+    posts = Songs.objects.all()
+    return render(request, 'auen/index.html', {'posts': posts,  'menu': menu, 'title': 'Главная страница'})
 
 def about(request):
     return render(request, 'auen/about.html', {'menu': menu, 'title': 'О сайте'})
